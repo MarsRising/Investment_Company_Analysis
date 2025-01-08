@@ -22,5 +22,19 @@ print(df)
 grouped = df.groupby('State')
 print(grouped)
 
+#Descriptive stats (mean, median, min, and max)
+grouped_stats = grouped.agg({
+  'Total Long-term Debt':['mean','median','min','max'],
+  'Total Equity': ['mean','median','min','max'],
+  'Debt to Equity': ['mean','median','min','max'],
+  'Total Liabilities': ['mean','median','min','max'],
+  'Total Revenue': ['mean','median','min','max'],
+  'Profit Margin': ['mean','median','min','max']
+})
+print(grouped_stats)
 
-df =pr
+#Debt-to-equity ratio = debt-to-income/revenue
+df['Debt to Revenue Ratio']=df['Total Long-term Debt']/df['Total Revenue']
+#filter to find businesses with negative debt-to-equity ratio
+
+
